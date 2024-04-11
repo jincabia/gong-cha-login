@@ -1,4 +1,5 @@
 import { getFirestore, collection, addDoc,getDocs  } from 'firebase/firestore';
+import app from '../_utils/firebase';
 
 // Function to write array data to Firestore
 const writeArrayToFirestore = async (drinkName, size, toppings,email) => {
@@ -20,21 +21,41 @@ const writeArrayToFirestore = async (drinkName, size, toppings,email) => {
     }
 };
 
+// const readOrdersFromFirestore = async () => {
+//     try {
+//         const db = getFirestore();
+//         const drinksSnapshot = await getDocs(collection(db, 'drinks'));
+//         // console.log(drinksSnapshot)
+//         drinksSnapshot.forEach((doc) => {
+//             console.log(...doc.data, )
+//             orders.push({ id: doc.id, ...doc.data() });
+//         });
+//         return orders;
+//     } catch (error) {
+//         console.error('Error reading orders from Firestore: ', error);
+//         throw error;
+//     }
+// };
+
 const readOrdersFromFirestore = async () => {
-    try {
-        const db = getFirestore();
+  
+      try {
+        const db = getFirestore(app); // Access Firestore instance
         const drinksSnapshot = await getDocs(collection(db, 'drinks'));
         // console.log(drinksSnapshot)
+        const orders = [];
         drinksSnapshot.forEach((doc) => {
-            console.log(...doc.data, 'Fart')
-            orders.push({ id: doc.id, ...doc.data() });
+          console.log(doc.data())
+          orders.push({ id: doc.id, ...doc.data() });
         });
         return orders;
-    } catch (error) {
-        console.error('Error reading orders from Firestore: ', error);
-        throw error;
-    }
-};
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
 
 export {readOrdersFromFirestore}
 export default writeArrayToFirestore
+
+
