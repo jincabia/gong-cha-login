@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { getCurrentUserEmail } from '../_utils/auth'; // Import the getCurrentUser function
 import Link from 'next/link'
-import Image from 'next/image'
 import Drink from '../components/gongchaDrink';
 import writeArrayToFirestore from '../_services/gongcha-service';
 
