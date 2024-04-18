@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { readOrdersFromFirestore } from '../_services/gongcha-service';
 
 
-export default function orderpage() {
+export default function Orderpage() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {

@@ -1,5 +1,7 @@
 import { getFirestore, collection, addDoc,getDocs  } from 'firebase/firestore';
 import app from '../_utils/firebase';
+import { getAuth } from 'firebase/auth';
+
 
 
 // Function to write array data to Firestore

@@ -2,7 +2,6 @@
 import { getAuth, createUserWithEmailAndPassword as createUser, signInWithEmailAndPassword as signIn, signOut, onAuthStateChanged } from 'firebase/auth';
 import app from './firebase';
 
-
 const auth = getAuth(app);
 
 // Sign up with email/password
