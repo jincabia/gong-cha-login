@@ -11,7 +11,7 @@ export const signUpWithEmailAndPassword = async (email, password) => {
     console.log('Successfully created new user:', userCredential.user.uid);
     return userCredential.user;
   } catch (error) {
-    console.error('Error creating new user:', error);
+    console.error('Error creating new user:', error); 
     throw error;
   }
 };

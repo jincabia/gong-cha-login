@@ -2,7 +2,7 @@ import { getFirestore, collection, addDoc,getDocs  } from 'firebase/firestore';
 import app from '../_utils/firebase';
 
 // Function to write array data to Firestore
-const writeArrayToFirestore = async (drinkName, size, toppings,email) => {
+const writeArrayToFirestore = async (drinkName, size, toppings,email,ice,sugar) => {
     console.log(email)
     try {
         const db = getFirestore();
@@ -11,7 +11,9 @@ const writeArrayToFirestore = async (drinkName, size, toppings,email) => {
             size: size,
             toppings: toppings,
             email: email, // Add email to the document data
-            status: 'pending' 
+            status: 'pending' ,
+            ice:ice,
+            sugar:sugar
         });
         console.log('Array data written with ID: ', docRef.id);
         return docRef.id; // Return the document ID if needed
@@ -21,21 +23,7 @@ const writeArrayToFirestore = async (drinkName, size, toppings,email) => {
     }
 };
 
-// const readOrdersFromFirestore = async () => {
-//     try {
-//         const db = getFirestore();
-//         const drinksSnapshot = await getDocs(collection(db, 'drinks'));
-//         // console.log(drinksSnapshot)
-//         drinksSnapshot.forEach((doc) => {
-//             console.log(...doc.data, )
-//             orders.push({ id: doc.id, ...doc.data() });
-//         });
-//         return orders;
-//     } catch (error) {
-//         console.error('Error reading orders from Firestore: ', error);
-//         throw error;
-//     }
-// };
+
 
 const readOrdersFromFirestore = async () => {
   
@@ -45,7 +33,7 @@ const readOrdersFromFirestore = async () => {
         // console.log(drinksSnapshot)
         const orders = [];
         drinksSnapshot.forEach((doc) => {
-          console.log(doc.data())
+          console.log(doc.id)
           orders.push({ id: doc.id, ...doc.data() });
         });
         return orders;
