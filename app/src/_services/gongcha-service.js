@@ -1,6 +1,7 @@
 import { getFirestore, collection, addDoc,getDocs  } from 'firebase/firestore';
 import app from '../_utils/firebase';
 
+
 // Function to write array data to Firestore
 const writeArrayToFirestore = async (drinkName, size, toppings,email,ice,sugar) => {
     console.log(email)
